@@ -1,6 +1,19 @@
+# #############################################################################
+# # Rasa Chatbot - Production Dependencies
+# # #############################################################################
+
 # DO NOT install rasa, it is already included in the base image
 # Only include rasa-sdk if you need custom actions
-rasa-sdk==3.6.*  # Must match base image
-structlog>=23.3.0
+rasa-sdk==3.6.*
+
+# Pinned for Rasa 3.6 compatibility (Sub-dependencies auto-resolved)
+pydantic<1.10.3
+structlog==23.2.0
+
+# Using latest versions as requested (Sub-dependencies auto-resolved)
+sqlalchemy<2.0.0
+packaging<22.0
+
+# Other utilities
 python-dotenv>=1.0.0
 requests>=2.31.0

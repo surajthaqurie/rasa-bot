@@ -22,7 +22,39 @@ A specialized Point of Sale conversational assistant built with **Rasa**.
    ```
    *The assistant will be available at http://localhost:5005.*
 
-## Testing & Shell
+## Testing & Documentation
+
+### 1. Interactive Swagger UI
+The easiest way to test the API is through the built-in Swagger interface:
+- **URL**: `http://localhost:5005/webhooks/conversation/swagger`
+- **Use**: Click "Try it out", enter your message, and click "Execute".
+
+### 2. Manual Terminal Testing (cURL)
+```bash
+curl -X POST http://localhost:5005/webhooks/conversation/ \
+     -H "Authorization: Bearer YOUR_RASA_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "sender": "user123",
+           "message": "hello"
+         }'
+```
+
+**Standardized Response Signature:**
+```json
+{
+  "message": "success",
+  "success": true,
+  "data": {
+    "message": {
+      "recipient_id": "user123",
+      "text": "Namaste! How can I help you today?"
+    }
+  }
+}
+```
+
+## Developer Tools
 
 ### Run Automated Tests
 Verify that the bot's logic is correct by running the test stories:
@@ -40,26 +72,6 @@ make visualize
 Talk to the bot directly in your terminal:
 ```bash
 make shell
-```
-
-## API Connection
-
-The server uses a **Custom Native Connector** to provide clean and standardized endpoints on port `5005`.
-
-### 1. Check Server Status
-```bash
-curl http://localhost:5005/status
-```
-
-### 2. Chat with the Bot
-```bash
-curl -X POST http://localhost:5005/webhook/conversation \
-     -H "Authorization: Bearer YOUR_RASA_TOKEN" \
-     -H "Content-Type: application/json" \
-     -d '{
-           "sender": "user123",
-           "message": "hello"
-         }'
 ```
 
 ---

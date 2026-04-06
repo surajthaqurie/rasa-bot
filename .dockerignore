@@ -1,23 +1,16 @@
-# Git
-.git
+# #############################################################################
+# # Rasa Chatbot - Docker Exclude List
+# # #############################################################################
+
+# Version Control
+.git/
 .gitignore
 
-# Rasa
-.rasa/
-models/
-.rasa-visualizations/
-events.db
-rasa.db
-
-# Python
+# Local Environment
+.env
 venv/
 ENV/
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -33,22 +26,27 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# Environment and Secrets
-.env
-.enn
-*.log
-
-# IDEs
 .idea/
 .vscode/
 
-# OS
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Rasa Artifacts (Generated at build time)
+.rasa/
+models/
+.rasa-visualizations/
+events.db
+rasa.db
+graph.html
+
+# Local Logs & OS
+*.log
 .DS_Store
 Thumbs.db
-
-# Documentation
-README.md
-implementation_plan.md
-task.md
-walkthrough.md
+.docker/
+.config/
+.keras/

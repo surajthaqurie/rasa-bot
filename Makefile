@@ -26,7 +26,7 @@ build:
 	docker-compose build
 
 train: validate
-	docker-compose run --rm rasa train
+	docker-compose run --rm -e PYTHONWARNINGS=ignore rasa train
 
 run: validate
 	docker-compose up --build
@@ -35,10 +35,10 @@ shell: validate
 	docker-compose exec rasa shell
 
 test: validate
-	docker-compose run --rm rasa test
+	docker-compose run --rm -e PYTHONWARNINGS=ignore rasa test
 
 visualize:
-	docker-compose run --rm rasa visualize
+	docker-compose run --rm -e PYTHONWARNINGS=ignore rasa visualize
 
 clean:
 	@echo "Cleaning up models, cache, and hidden configuration directories..."

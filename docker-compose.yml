@@ -8,6 +8,9 @@ services:
     ports:
       - "27017:27017"
     environment:
+      PYTHONPATH: .
+      PYTHONWARNINGS: "ignore"
+      SQLALCHEMY_SILENCE_UBER_WARNING: 1
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     env_file:
@@ -20,9 +23,6 @@ services:
         limits:
           cpus: "0.50"
           memory: 512M
-        reservations:
-          cpus: "0.25"
-          memory: 256M
     logging:
       driver: "json-file"
       options:
@@ -41,20 +41,30 @@ services:
     depends_on:
       mongo:
         condition: service_healthy
-    ports:
-      - "5005:5005"
     env_file:
       - .env
+    ports:
+      - "5005:5005"
+    # Individual volumes for persistence only - No blanket host-to-container mount
     volumes:
-      - .:/app
+      - ./models:/app/models
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:5005/webhooks/conversation/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     deploy:
       resources:
         limits:
           cpus: "1.0"
           memory: 2G
-        reservations:
-          cpus: "0.5"
-          memory: 1G
 
 volumes:
   mongo_data:
