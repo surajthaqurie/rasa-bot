@@ -1,0 +1,6 @@
+# DO NOT install rasa, it is already included in the base image
+# Only include rasa-sdk if you need custom actions
+rasa-sdk==3.6.*  # Must match base image
+structlog>=23.3.0
+python-dotenv>=1.0.0
+requests>=2.31.0

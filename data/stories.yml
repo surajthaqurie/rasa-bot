@@ -1,0 +1,61 @@
+# #############################################################################
+# # Rasa Chatbot - Conversation Stories
+# # This file defines sample conversation paths (stories) to train the bot
+# # on how to handle multi-turn dialogues and predict next actions.
+# # #############################################################################
+version: "3.1"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_great
+      - action: utter_happy
+
+  - story: sad path 1
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: affirm
+      - action: utter_happy
+
+  - story: sad path 2
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+      - intent: deny
+  - story: shop and checkout
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: search_product
+      - action: utter_ask_product
+      - intent: provide_product
+      - action: utter_ask_quantity
+      - intent: provide_quantity
+      - action: utter_added_to_cart
+      - intent: view_cart
+      - action: utter_show_cart
+      - intent: checkout
+      - action: utter_checkout_success
+
+  - story: clear cart
+    steps:
+      - intent: view_cart
+      - action: utter_show_cart
+      - intent: clear_cart
+      - action: utter_cart_empty
+
+  - story: cancel order
+    steps:
+      - intent: checkout
+      - action: utter_ask_product
+      - intent: cancel_order
+      - action: utter_cancel_order

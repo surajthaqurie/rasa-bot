@@ -1,0 +1,143 @@
+# #############################################################################
+# # Rasa Chatbot - Domain File
+# # This file defines the assistant's universe: intents, entities, slots, and
+# # the responses (utterances) the bot can use in conversation.
+# # #############################################################################
+version: "3.1"
+
+# -----------------------------
+# Intents
+# -----------------------------
+intents:
+  # core
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+
+  # mood (optional UX)
+  - mood_great
+  - mood_unhappy
+
+  # Ecommerce chat queries
+  - search_product
+  - add_to_cart
+  - remove_from_cart
+  - view_cart
+  - clear_cart
+  - checkout
+  - provide_quantity
+  - provide_product
+  - ask_price
+  - ask_availability
+  - cancel_order
+
+# -----------------------------
+# Entities
+# -----------------------------
+entities:
+  - product
+  - quantity
+  - price
+
+# -----------------------------
+# Slots
+# -----------------------------
+slots:
+  product:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product
+
+  quantity:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: quantity
+
+  cart:
+    type: any
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  total_amount:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  currency:
+    type: text
+    initial_value: "NPR"
+    mappings:
+      - type: custom
+
+# -----------------------------
+# Responses
+# -----------------------------
+responses:
+  utter_greet:
+    - text: "Namaste! How can I help you today?"
+
+  utter_goodbye:
+    - text: "Thank you! Visit again."
+
+  utter_iamabot:
+    - text: "I am an assistant powered by Rasa."
+
+  utter_ask_product:
+    - text: "Which product are you looking for?"
+
+  utter_ask_quantity:
+    - text: "How many units do you want?"
+
+  utter_added_to_cart:
+    - text: "{quantity} x {product} added to your cart."
+
+  utter_removed_from_cart:
+    - text: "{product} removed from your cart"
+
+  utter_cart_empty:
+    - text: "Your cart is empty."
+
+  utter_show_cart:
+    - text: "Here is your cart summary:"
+
+  utter_checkout_success:
+    - text: "Your order has been placed successfully!"
+
+  utter_cancel_order:
+    - text: "Your order has been cancelled."
+
+  utter_cheer_up:
+    - text: "Here is something to cheer you up."
+      image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+    - text: "Did that help?"
+
+  utter_happy:
+    - text: "Great! Let’s continue."
+
+  utter_fallback:
+    - text: "Sorry, I didn’t understand that. Can you rephrase?"
+
+# -----------------------------
+# Registered Actions
+# -----------------------------
+actions: []
+
+# -----------------------------
+# No forms needed
+# -----------------------------
+forms: {}
+
+# -----------------------------
+# Session configuration
+# -----------------------------
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

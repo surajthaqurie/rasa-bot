@@ -1,0 +1,17 @@
+# #############################################################################
+# # Rasa Chatbot - Conversation Rules
+# # This file defines strict rules for the bot to follow, ensuring
+# # predictable behavior for specific triggers (e.g., FAQs, fallbacks).
+# # #############################################################################
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot

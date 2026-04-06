@@ -1,0 +1,175 @@
+# #############################################################################
+# # Rasa Chatbot - NLU Training Data
+# # This file contains natural language examples for each intent, used to
+# # train the machine learning model to understand user messages.
+# # #############################################################################
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
+      - correct
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+
+  - intent: mood_great
+    examples: |
+      - perfect
+      - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+
+  - intent: mood_unhappy
+    examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
+      - not good
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+
+  - intent: search_product
+    examples: |
+      - find me some [laptop](product)
+      - search for [headphones](product)
+      - I am looking for [shoes](product)
+      - show me [t-shirts](product)
+      - can you help me find a [drill](product)?
+      - I want to buy a [smartphone](product)
+      - search for [bread](product)
+      - list [dairy](product) products
+
+  - intent: add_to_cart
+    examples: |
+      - add [this](product) to my cart
+      - put [one](quantity) [laptop](product) in the basket
+      - add [2](quantity) [breads](product) to my cart
+      - I want to buy [3](quantity) [apples](product)
+      - please add [5](quantity) [units](product) of [speakers](product)
+      - add [milk](product)
+
+  - intent: remove_from_cart
+    examples: |
+      - remove [laptop](product) from my cart
+      - delete [bread](product)
+      - I don't want [this](product) anymore
+      - take out [milk](product) from the cart
+
+  - intent: view_cart
+    examples: |
+      - show me my cart
+      - what is in my basket?
+      - view my order
+      - check my shopping list
+      - show cart summary
+
+  - intent: clear_cart
+    examples: |
+      - clear my entire cart
+      - remove everything
+      - empty the basket
+      - I want to start over, clear cart
+
+  - intent: checkout
+    examples: |
+      - I want to pay now
+      - checkout
+      - proceed to payment
+      - place my order
+      - I'm done shopping, let's checkout
+
+  - intent: provide_quantity
+    examples: |
+      - [2](quantity)
+      - [5](quantity)
+      - [ten](quantity)
+      - just [one](quantity)
+      - I want [3](quantity)
+
+  - intent: ask_price
+    examples: |
+      - how much is the [laptop](product)?
+      - price for [bread](product)?
+      - what is the cost of [this](product)?
+      - how much does it cost?
+
+  - intent: cancel_order
+    examples: |
+      - cancel my order
+      - I want to stop this order
+      - stop the checkout
+      - cancel everything
