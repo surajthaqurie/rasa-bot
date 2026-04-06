@@ -44,16 +44,16 @@ make shell
 
 ## API Connection
 
-To connect an external application to the Rasa server, use the REST API with the Authorization header.
+The server uses a **Custom Native Connector** to provide clean and standardized endpoints on port `5005`.
 
-### 1. Check Version
+### 1. Check Server Status
 ```bash
-curl -H "Authorization: Bearer YOUR_RASA_TOKEN" http://localhost:5005/version
+curl http://localhost:5005/status
 ```
 
 ### 2. Chat with the Bot
 ```bash
-curl -X POST http://localhost:5005/webhooks/rest/webhook \
+curl -X POST http://localhost:5005/webhook/conversation \
      -H "Authorization: Bearer YOUR_RASA_TOKEN" \
      -H "Content-Type: application/json" \
      -d '{
